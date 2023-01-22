@@ -1,6 +1,7 @@
 <h1>Ovdje ste u svom edit mode-u za seshn</h1>
 Vase ime: <%= @player.name %>
 <div>
+    <a href="<%= studio_player_step_sequencers_path(@studio, @player) %>">Pregledaj step seq</a>
   <% @player.step_sequencers.each do |step_sequencers| %>
     <div>
         <p>Zvuk: <%= step_sequencers.sample.name %></p>

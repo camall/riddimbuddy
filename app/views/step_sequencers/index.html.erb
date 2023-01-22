@@ -1,0 +1,10 @@
+<ul>
+  <% @step_sequencers.each do |step_sequencer| %>
+    <li>
+        <p>Stepcode: <%= step_sequencer.stepcode %></p>
+        <a href="<%= edit_studio_player_step_sequencer_path(@studio, @player, step_sequencer) %>">
+            Udji
+        </a>
+    </li>
+  <% end %>
+</ul>

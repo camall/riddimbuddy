@@ -26,7 +26,8 @@
     const audio1 = new Audio('http://localhost:3000/BD_Blofeld_001.wav');
     const audio2 = new Audio('http://localhost:3000/Clap_Blofeld_1.wav');
     const audio3 = new Audio('http://localhost:3000/HH_Blofeld B.wav');
-    audios = [audio1, audio2, audio3]
+    var audios = <%= raw @step_sequencers.map{|ss| ('http://localhost:3000/'+ ss.sample.url)}.to_json %>;
+    var audios = audios.map(ss => new Audio(ss));
     
     stepcodes.forEach(function(stepcode, stepindex) {
       stepcode.split('').forEach(function(char, index) {

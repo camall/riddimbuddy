@@ -13,7 +13,7 @@ class PlayersController < ApplicationController
         end
 
         if @player.save
-            redirect_to [@studio, @player]
+            redirect_to studio_player_path(@studio, @player)
         else
             render :new, status: :unprocessable_entity
         end

@@ -1,0 +1,7 @@
+<h1>Edit step seq: </h1>
+
+<%= form_for [@studio, @player, @step_sequencer] do |form| %>
+    <%= form.label :stepcode %><br>
+    <%= form.text_field :stepcode %>
+    <%= form.submit %>
+<% end %>
