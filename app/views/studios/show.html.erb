@@ -8,5 +8,14 @@
   <% end %>
 </ul>
 
+<ul>
+  <% @step_sequencers.each do |step_sequencer| %>
+    <li>
+        <p>Name: <%= step_sequencer.player.name %></p>
+        <p>Stepcode: <%= step_sequencer.stepcode %></p>
+    </li>
+  <% end %>
+</ul>
+
 <h2>Za ulazak u studio otvorite <%= link_to 'Patient Record', new_studio_player_path(@studio) %></h2>
 <h2>Link je: <%= new_studio_player_url(@studio) %></h2>

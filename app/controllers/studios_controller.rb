@@ -5,5 +5,6 @@ class StudiosController < ApplicationController
 
     def show
         @studio = Studio.find(params[:id])
+        @step_sequencers = StepSequencer.where(player: @studio.players)
     end
 end
