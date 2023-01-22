@@ -10,13 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_22_004142) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_22_022348) do
   create_table "players", force: :cascade do |t|
     t.string "name"
     t.integer "studio_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["studio_id"], name: "index_players_on_studio_id"
+  end
+
+  create_table "samples", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "studios", force: :cascade do |t|
