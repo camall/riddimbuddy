@@ -1,0 +1,12 @@
+<h1>Studios</h1>
+
+<ul>
+  <% @studios.each do |studio| %>
+    <li>
+        <p>Name: <%= studio.name %></p>
+        <a href="<%= studio_path(studio) %>">
+            Udji
+        </a>
+    </li>
+  <% end %>
+</ul>
