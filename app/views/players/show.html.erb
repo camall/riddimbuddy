@@ -1,0 +1,11 @@
+<h1>Ovdje ste u svom edit mode-u za seshn</h1>
+Vase ime: <%= @player.name %>
+<div>
+  <% @player.step_sequencers.each do |step_sequencers| %>
+    <div>
+        <p>Zvuk: <%= step_sequencers.sample.name %></p>
+        <p>Stepcode: <%= step_sequencers.stepcode %></p>
+    </div>
+  <% end %>
+</div>
+<h2>

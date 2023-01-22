@@ -8,11 +8,20 @@ class PlayersController < ApplicationController
         @studio = Studio.find(params[:studio_id])
         @player = @studio.players.create(player_params)
 
+        Sample.all.each do |sample|
+            @player.step_sequencers.create(sample: sample, stepcode: '00000000')
+        end
+
         if @player.save
-            render :new, status: :unprocessable_entity
+            redirect_to [@studio, @player]
         else
             render :new, status: :unprocessable_entity
         end
+    end
+
+    def show
+        @studio = Studio.find(params[:studio_id])
+        @player = Player.find(params[:id])
     end
 
     private

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_22_022348) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_22_022914) do
   create_table "players", force: :cascade do |t|
     t.string "name"
     t.integer "studio_id"
@@ -24,6 +24,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_22_022348) do
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "step_sequencers", force: :cascade do |t|
+    t.string "stepcode"
+    t.integer "player_id"
+    t.integer "sample_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_step_sequencers_on_player_id"
+    t.index ["sample_id"], name: "index_step_sequencers_on_sample_id"
   end
 
   create_table "studios", force: :cascade do |t|
