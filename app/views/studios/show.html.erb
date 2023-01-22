@@ -19,3 +19,25 @@
 
 <h2>Za ulazak u studio otvorite <%= link_to 'Patient Record', new_studio_player_path(@studio) %></h2>
 <h2>Link je: <%= new_studio_player_url(@studio) %></h2>
+
+<script>
+    var stepcodes = <%= raw @step_sequencers.pluck(:stepcode).to_json %>;
+    const play = false
+    const audio1 = new Audio('http://localhost:3000/BD_Blofeld_001.wav');
+    const audio2 = new Audio('http://localhost:3000/Clap_Blofeld_1.wav');
+    const audio3 = new Audio('http://localhost:3000/HH_Blofeld B.wav');
+    audios = [audio1, audio2, audio3]
+    
+    stepcodes.forEach(function(stepcode, stepindex) {
+      stepcode.split('').forEach(function(char, index) {
+        if (char == 1)
+          {
+          setTimeout(() => {
+            setInterval(function(){ audios[stepindex].play(); }, 8000);
+          }, (index + 1)*1000);
+        }
+      });
+    });
+    
+
+</script>
