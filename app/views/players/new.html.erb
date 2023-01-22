@@ -1,0 +1,8 @@
+<h1>Welcome! Enter your name: </h1>
+
+<h2>Add a comment:</h2>
+<%= form_for [@studio, @player] do |form| %>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    <%= form.submit %>
+<% end %>
