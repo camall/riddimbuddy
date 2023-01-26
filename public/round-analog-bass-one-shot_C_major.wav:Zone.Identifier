@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=https://samplefocus.com/
+HostUrl=https://sample-focus-production.s3.us-west-1.amazonaws.com/samples/sample_files/185421/0ce5f93a0f2ac5e5d6a7bc5ec26fd1eba51fbd99/original/_Basse_Jump.wav?response-content-disposition=attachment%3B%20filename%3Dround-analog-bass-one-shot_C_major.wav&response-content-type=audio%2Fwav&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI2ZJXYGXIVHKFDIA%2F20230126%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20230126T184224Z&X-Amz-Expires=1200&X-Amz-SignedHeaders=host&X-Amz-Signature=ccccdc128300b402826375885657f1aebb8979fba1518b8535a93dfb1d6b7bbf

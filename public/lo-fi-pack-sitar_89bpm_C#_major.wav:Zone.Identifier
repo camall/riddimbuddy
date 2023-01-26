@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=https://samplefocus.com/
+HostUrl=https://sample-focus-production.s3.us-west-1.amazonaws.com/samples/sample_files/127400/5f5e4e367f1d083abeb97b22001959c18d8233fb/original/_Sitar.wav?response-content-disposition=attachment%3B%20filename%3Dlo-fi-pack-sitar_89bpm_C%23_major.wav&response-content-type=audio%2Fwav&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI2ZJXYGXIVHKFDIA%2F20230126%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20230126T184150Z&X-Amz-Expires=1200&X-Amz-SignedHeaders=host&X-Amz-Signature=ddc391ccae4852d5777958187d2746b1cfef34b53046d6b2b8867aedfd4a07a9

@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=https://samplefocus.com/
+HostUrl=https://sample-focus-production.s3.us-west-1.amazonaws.com/samples/sample_files/185676/b676507c1baaa9fb64f03c48bc1dc5850c962f3e/original/_north-memphis-cowbell_90bpm_E_major.wav?response-content-disposition=attachment%3B%20filename%3Dpitched-phonk-single-cowbell-shot_140bpm_E_major.wav&response-content-type=audio%2Fwav&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI2ZJXYGXIVHKFDIA%2F20230126%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Date=20230126T184032Z&X-Amz-Expires=1200&X-Amz-SignedHeaders=host&X-Amz-Signature=5c1b897c5a4115971ee86198798bcce5f1e411d4189bf315d6abf565c73cd7e0

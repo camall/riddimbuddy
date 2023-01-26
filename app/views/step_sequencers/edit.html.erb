@@ -3,5 +3,7 @@
 <%= form_for [@studio, @player, @step_sequencer] do |form| %>
     <%= form.label :stepcode %><br>
     <%= form.text_field :stepcode %>
+    <%= form.label :stepcode %><br>
+    <%= form.collection_select :sample_id, Sample.order(:name), :id, :name %>
     <%= form.submit %>
 <% end %>

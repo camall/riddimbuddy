@@ -29,6 +29,6 @@ class StepSequencersController < ApplicationController
 
 
     def update_params
-        params.require(:step_sequencer).permit(:stepcode)
+        params.require(:step_sequencer).permit(:stepcode, :sample_id)
     end
 end
