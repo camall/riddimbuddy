@@ -8,7 +8,7 @@ class PlayersController < ApplicationController
         @studio = Studio.find(params[:studio_id])
         @player = @studio.players.create(player_params)
 
-        Sample.all.each do |sample|
+        Sample.first(3).each do |sample|
             @player.step_sequencers.create(sample: sample, stepcode: '00000000')
         end
 
