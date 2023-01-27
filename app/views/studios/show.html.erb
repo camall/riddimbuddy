@@ -3,7 +3,7 @@
 <ul>
   <% @studio.players.each do |player| %>
     <li>
-        <p>Name: <%= player.name %></p>
+        <p>Name: <%= player.name %> - ID: <%= player.id %> - URl: <%= studio_player_path(player) %></p>
         <% player.step_sequencers.each do |step_sequencer| %>
           <p>Sample name: <%= step_sequencer.sample.name %> - Stepcode: <%= step_sequencer.stepcode %></p>
         <% end %>
@@ -22,10 +22,10 @@
     stepcodes.forEach(function(stepcode, stepindex) {
       stepcode.split('').forEach(function(char, index) {
         if (char == 1)
-          {
+        {
           setTimeout(() => {
             setInterval(function(){ audios[stepindex].play(); }, 4000);
-          }, (index + 1)*500);
+          }, index*500);
         }
       });
     });
