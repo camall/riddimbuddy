@@ -1,44 +1,20 @@
-<h1>Dobro dosli u studio: <%= @studio.name %></h1>
-<p> Sviraj <button id="play">Play</button></p>
-<p> Ovo svira na <input type="text" id="bpm" value='120'></p>
-<ul>
-  <% @studio.players.each do |player| %>
-    <li>
-        <p>Name: <%= player.name %> - ID: <%= player.id %> - URl: <%= studio_player_path(@studio, player) %></p>
-        <% player.step_sequencers.each do |step_sequencer| %>
-          <p>Sample name: <%= step_sequencer.sample.name %> - Stepcode: <%= step_sequencer.stepcode %></p>
-        <% end %>
-    </li>
-  <% end %>
-</ul>
+<div data-controller="studio" 
+  data-studio-stepcodes='<%= raw @step_sequencers.pluck(:stepcode).to_json %>'
+  data-studio-urls='<%= raw @step_sequencers.map{|ss| ('http://localhost:3000/'+ ss.sample.url)}.to_json %>'>
+  <h1>Dobro dosli u studio: <%= @studio.name %></h1>
+  <p> Sviraj <button id="play">Play</button></p>
+  <p> Ovo svira na <input type="text" id="bpm" value='120'></p>
+  <ul>
+    <% @studio.players.each do |player| %>
+      <li>
+          <p>Name: <%= player.name %> - ID: <%= player.id %> - URl: <%= studio_player_path(@studio, player) %></p>
+          <% player.step_sequencers.each do |step_sequencer| %>
+            <p>Sample name: <%= step_sequencer.sample.name %> - Stepcode: <%= step_sequencer.stepcode %></p>
+          <% end %>
+      </li>
+    <% end %>
+  </ul>
 
-<h2><%= link_to 'Novi user', new_studio_player_path(@studio) %></h2>
-<h2>Link je: <%= new_studio_player_url(@studio) %></h2>
-
-<script>
-    const minute = 60000;
-    const steps = 8;
-    const play_studio = () => {
-      var bpm = document.getElementById("bpm").value;
-      var beat = (minute/bpm)*steps;
-      var stepcodes = <%= raw @step_sequencers.pluck(:stepcode).to_json %>;
-      var audios = <%= raw @step_sequencers.map{|ss| ('http://localhost:3000/'+ ss.sample.url)}.to_json %>;
-      var audios = audios.map(ss => new Audio(ss));
-      
-      stepcodes.forEach(function(stepcode, stepindex) {
-        stepcode.split('').forEach(function(char, index) {
-          if (char == 1)
-          {
-            setTimeout(() => {
-              setInterval(function(){ audios[stepindex].play(); }, beat);
-            }, index*(beat/8));
-          }
-        });
-      });
-    }
-    var play = document.getElementById("play");
-  
-    play.addEventListener("click", play_studio);
-    
-   
-</script>
+  <h2><%= link_to 'Novi user', new_studio_player_path(@studio) %></h2>
+  <h2>Link je: <%= new_studio_player_url(@studio) %></h2>
+</div>
