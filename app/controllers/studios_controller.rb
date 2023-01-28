@@ -6,6 +6,7 @@ class StudiosController < ApplicationController
     def show
         @studio = Studio.find(params[:id])
         @step_sequencers = StepSequencer.where(player: @studio.players)
+            .map {|step_sequencer| {stepcode: step_sequencer.stepcode, sampleUrl: 'http://localhost:3000/'+step_sequencer.sample.url }}
     end
 
     def new

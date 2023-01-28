@@ -1,30 +1,50 @@
 import { Controller } from "@hotwired/stimulus"
+import Tone from 'tone'
 
 export default class extends Controller {
-  connect() {
-    const minute = 60000
-    const steps = 8
-    var bpm = 120
-    var beat = (minute/bpm)*steps
-    var stepcodes = JSON.parse(this.data.get("stepcodes"));
-    var audios = JSON.parse(this.data.get("urls"))
-    var audios = audios.map(ss => new Audio(ss));
-    stepcodes.forEach(function(stepcode, stepindex) {
-        console.log('nesto')
-        stepcode.split('').forEach(function(char, index) {
-        if (char == 1)
-        {
-        setTimeout(() => {
-            setInterval(function(){ audios[stepindex].play(); }, beat);
-        }, (index+1)*(beat/8));
-        }
-    });
-    });
-  }
+    static targets = [ "bpm" ]
+
+    connect() {
+        
+    }
+
+    createSamplePlayer(url) {
+        return new Tone.Player(url).toDestination();
+    }
+
+    playTonePlayer(tonePlayer) {
+        Tone.loaded().then(() => {
+            tonePlayer.start();
+        });
+    }
+
+    async play() {
+        var stepSequencers = JSON.parse(this.data.get("step-sequencers"))
+        var createSamplePlayer = this.createSamplePlayer
+        var playTonePlayer = this.playTonePlayer
+        await Tone.start()
+        
+        this.loops = stepSequencers.map(function(stepSequencer) {
+            return stepSequencer.stepcode.split('').map(function(stepcode, index) {
+                var loop = new Tone.Loop(time => {
+                    playTonePlayer(createSamplePlayer(stepSequencer.sampleUrl))
+                }, '2n')
+                loop.interval = "2n";
+                if (stepcode == '1') { 
+                    Tone.Transport.schedule(time => {
+                        loop.start() 
+                    }, index+"n");
+                }
+                return loop
+            })
+        }).flat(1)
+        Tone.Transport.bpm.value = this.bpmTarget.value
+        Tone.Transport.start()
+    }
+
+    stop() {
+        this.loops.forEach(function(loop) {
+            loop.stop();
+        })
+    }
 }
-
-
-
-    // var play = document.getElementById("play");
-  
-    // play.addEventListener("click", play_studio);

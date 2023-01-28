@@ -1,9 +1,15 @@
-<div data-controller="studio" 
-  data-studio-stepcodes='<%= raw @step_sequencers.pluck(:stepcode).to_json %>'
-  data-studio-urls='<%= raw @step_sequencers.map{|ss| ('http://localhost:3000/'+ ss.sample.url)}.to_json %>'>
+<div 
+  data-controller="studio" 
+  data-studio-step-sequencers='<%= raw @step_sequencers.to_json %>'
+  >
   <h1>Dobro dosli u studio: <%= @studio.name %></h1>
-  <p> Sviraj <button id="play">Play</button></p>
-  <p> Ovo svira na <input type="text" id="bpm" value='120'></p>
+  <p> 
+    Sviraj <button id="play" data-action="click->studio#play">Play</button>
+    <button id="stop" data-action="click->studio#stop">Stop</button>
+  </p>
+  <p> 
+    Ovo svira na <input type="text" data-studio-target="bpm" value='120'>
+  </p>
   <ul>
     <% @studio.players.each do |player| %>
       <li>
