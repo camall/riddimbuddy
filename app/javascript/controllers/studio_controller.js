@@ -23,21 +23,22 @@ export default class extends Controller {
         var createSamplePlayer = this.createSamplePlayer
         var playTonePlayer = this.playTonePlayer
         await Tone.start()
-        
+
+        const synthB = new Tone.FMSynth().toDestination();
+        const time = Tone.Time("8n").toSeconds();
+
         this.loops = stepSequencers.map(function(stepSequencer) {
             return stepSequencer.stepcode.split('').map(function(stepcode, index) {
                 var loop = new Tone.Loop(time => {
                     playTonePlayer(createSamplePlayer(stepSequencer.sampleUrl))
-                }, '2n')
-                loop.interval = "2n";
-                if (stepcode == '1') { 
-                    Tone.Transport.schedule(time => {
-                        loop.start() 
-                    }, index+"n");
+                }, time*8)
+                if (stepcode == '1') {
+                    loop.start(time*index)
                 }
                 return loop
             })
         }).flat(1)
+
         Tone.Transport.bpm.value = this.bpmTarget.value
         Tone.Transport.start()
     }
