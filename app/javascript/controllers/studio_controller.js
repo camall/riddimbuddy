@@ -24,16 +24,17 @@ export default class extends Controller {
         var playTonePlayer = this.playTonePlayer
         await Tone.start()
 
-        const synthB = new Tone.FMSynth().toDestination();
-        const time = Tone.Time("8n").toSeconds();
+        // const synthA = new Tone.FMSynth().toDestination();
+        const bartime = Tone.Time("8n").toSeconds();
 
         this.loops = stepSequencers.map(function(stepSequencer) {
             return stepSequencer.stepcode.split('').map(function(stepcode, index) {
                 var loop = new Tone.Loop(time => {
                     playTonePlayer(createSamplePlayer(stepSequencer.sampleUrl))
-                }, time*8)
+                    // synthA.triggerAttackRelease("C2", "16n", time);
+                }, bartime*8)
                 if (stepcode == '1') {
-                    loop.start(time*index)
+                    loop.start(bartime*index)
                 }
                 return loop
             })
