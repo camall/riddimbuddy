@@ -17,6 +17,7 @@
           <% player.step_sequencers.each do |step_sequencer| %>
             <p>Sample name: <%= step_sequencer.sample.name %> - Stepcode: <%= step_sequencer.stepcode %></p>
           <% end %>
+          <%= link_to 'Edit', edit_studio_player_path(@studio, player) %>
       </li>
     <% end %>
   </ul>

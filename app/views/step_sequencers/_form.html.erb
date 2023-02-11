@@ -1,0 +1,11 @@
+<div data-controller="stepsequencer">
+  <%= form_for [@studio, @player, step_sequencer] do |form| %>
+      <%= form.collection_select :sample_id, Sample.order(:name), :id, :name %>
+      <%= form.hidden_field :stepcode, data: { stepsequencer_target: "stepcode" } %>
+      <% step_sequencer.stepcode.split('').each_with_index do |step, index| %>
+          <button data-action="click->stepsequencer#stepButtonClick" 
+              data-stepsequencer-target="step" data-index='<%= index %>' value='<%= step %>'>Klikni</button>
+      <% end %>
+      <%= form.submit %>
+  <% end %>
+</div>

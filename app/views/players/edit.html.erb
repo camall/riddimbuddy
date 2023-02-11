@@ -1,0 +1,5 @@
+<h1>Edit<h2>
+
+<% @player.step_sequencers.each do |step_sequencer| %>
+  <%= render "step_sequencers/form", studio: @studio, player: @player, step_sequencer: step_sequencer %>
+<% end %>
